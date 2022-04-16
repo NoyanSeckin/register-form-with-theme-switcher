@@ -323,8 +323,27 @@ form div p{
   font-size: 20px;
 }
 
+.checkbox-wrapper{
+  max-height: 30px;
+}
+
 /* Intro Dark */
 
 .bg-dark-grey{
   background: #8C8C8C;
+}
+
+.w-70{
+  max-width: 63%;
+}
+
+/* Fix visual issues */
+
+.input-wrapper{
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.error-p{
+  position: absolute
 }

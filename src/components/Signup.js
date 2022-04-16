@@ -41,7 +41,7 @@ function Signup({setTheme}) {
               password: Yup.string().min(8, 'Şifreniz en az 8 karakterden oluşmalı').required('Şifre boş bırakılamaz'),
               repeatPassword: Yup.string().when('password', {
                 is: val => (val && val.length > 0 ? true : false),
-                then: Yup.string().oneOf([Yup.ref('password')], 'Şifreler aynı olmak zorunda')
+                then: Yup.string().oneOf([Yup.ref('password')], 'Şifreler aynı olmak zorunda').required('Şifrenizi tekrar giriniz')
               }),
               agree: Yup.bool().oneOf([true], 'Koşulları kabul etmelisiniz')
             })
@@ -51,20 +51,20 @@ function Signup({setTheme}) {
           }}
           >
             { ({values, errors, handleReset, handleSubmit, dirty, isSubmitting, handleChange}) => (
-            <form className={`${Theme && 'color-white'}`} onSubmit={handleSubmit}>
+            <form className={` w-70 ${Theme && 'color-white'}`} onSubmit={handleSubmit}>
               <div>
                 <h1 className={`header as-start ${Theme && 'color-white'}`}>Kayıt</h1>
                 <hr className={`header-line ${Theme && 'header-line-dark'}`} />
               </div>
               <div className='d-flex'>
-                <div>
+                <div className='input-wrapper'>
                   <label htmlFor="name">İSİM
                     {isStar(errors.name)}
                   </label>
                   <input id='name' type="text" value={values.name} onChange={handleChange} placeholder={placeholders.name} 
                   className={`${Theme && 'input-dark'}`}
                   />
-                  <p> {errors.name}</p>
+                  <p className='error-p'> {errors.name}</p>
                 </div>
                 <div className='divider'> 
 
@@ -108,9 +108,7 @@ function Signup({setTheme}) {
                 <input id='repeatPassword' type="password" value={values.repeatPassword} onChange={handleChange} placeholder={placeholders.repeatPassword} className={`${Theme && 'input-dark'}`}/>
                 <p> {errors.repeatPassword}</p>
               </div>
-              {/* Dark checkbox */}
-             
-              <div className='d-flex'>
+              <div className='d-flex checkbox-wrapper'>
                 <input id='agree' type="checkbox" value={values.agree} onChange={handleChange}  className={`w-5 ${Theme && 'checkbox'}`}/>
                 <label className={`as-end agree-text ${Theme && 'dark-checkbox'}`}
                 htmlFor="agree">Sözleşmeyi kabul ediyorum
@@ -118,18 +116,6 @@ function Signup({setTheme}) {
                 </label>
                 <p className='mt-1 ml-1'>{errors.agree}</p>
               </div>
-              {/* Light checkbox */}
-              {/* {!Theme &&  
-              <div className='d-flex'>
-                <input id='agree' type="checkbox" value={values.agree} onChange={handleChange}  className="w-5 checkbox"/>
-                <label className='agree-text as-end' 
-                htmlFor="agree">Sözleşmeyi kabul ediyorum
-                  {isStar(errors.agree)}
-                </label>
-                <p className='mt-1 ml-1'>{errors.agree}</p>
-              </div>} */}
-              
-              
               <button className={`submit-btn ${Theme && 'bg-yellow'}`} type='submit' disabled={!dirty}>KAYIT OL</button>
             </form> 
             )}
