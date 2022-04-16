@@ -242,10 +242,6 @@ form div p{
   align-self: flex-start;
 }
 
-.as-center{
-  align-self: center;
-}
-
 .as-end{
   align-self: end;
 }
@@ -254,25 +250,8 @@ form div p{
   justify-self: start;
 }
 
-.ml{
-  margin-left: 3rem !important;
-}
-
-.ml-lg{
-  margin-left: 8rem !important;
-}
-
 .mx-auto{
   margin: 0 auto;
-}
-
-.mt-2{
-  margin-top: 2rem;
-}
-
-.mt-1{
-  margin-top: 0.2rem;
-  margin-left: 0.5rem;
 }
 
 /* Dark Mode */
@@ -359,7 +338,8 @@ form div p{
 }
 
 .error-p{
-  position: absolute
+  position: absolute;
+  margin-top: 5px;
 }
 
 .checkbox-error-p{
