@@ -305,6 +305,13 @@ form div p{
   position: absolute;
 }
 
+.dark-checkbox{
+  max-height: 20px;
+  margin-left: 30px;
+  margin-top: 20px;
+  align-self: center;
+}
+
 .dark-checkbox::before{
   content: '';
   border: 1px solid #fff;
@@ -313,8 +320,12 @@ form div p{
   height: 20px;
   width: 18px;
   background-color: #2C2C2C;
-  margin-right: 10px;
-  padding-left: 4px;
+  padding-left: 2px;
+  margin-top: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+
 }
 
 .checkbox:checked + .dark-checkbox::before{
@@ -323,8 +334,14 @@ form div p{
   font-size: 20px;
 }
 
+.checkbox:checked + .dark-checkbox{
+
+}
+
 .checkbox-wrapper{
   max-height: 30px;
+  display: flex;
+  position: relative;
 }
 
 /* Intro Dark */
@@ -333,17 +350,25 @@ form div p{
   background: #8C8C8C;
 }
 
-.w-70{
-  max-width: 63%;
-}
 
 /* Fix visual issues */
 
 .input-wrapper{
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 1.7rem;
 }
 
 .error-p{
   position: absolute
 }
+
+.checkbox-error-p{
+  position: absolute;
+  right: -8px;
+  top: 4px;
+}
+
+.checkbox-error-p-dark{
+  top: 11px;
+}
+

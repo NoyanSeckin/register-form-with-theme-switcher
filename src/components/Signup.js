@@ -5,6 +5,15 @@ import ThemeContext from '../contexts/ThemeContext.';
 function Signup({setTheme}) {
   const Theme = useContext(ThemeContext);
 
+  const inputHeaders = {
+    name: 'İSİM',
+    lastName: 'SOYİSİM',
+    email: 'E-POSTA',
+    userName: 'KULLANICI ADI',
+    password: 'ŞİFRE',
+    repeatPassword: 'ŞİFRENİ TEKRAR GİR',
+    agree: 'Sözleşmeyi kabul ediyorum'
+  }
   const placeholders = {
     name: 'İsmini gir',
     lastName: 'Soyismini gir',
@@ -13,10 +22,49 @@ function Signup({setTheme}) {
     password: 'Şifreni gir',
     repeatPassword: 'Şifreni doğrula',
   }
+  function checkType(value){ 
+    if(value === 'repeatPassword'){
+      return 'password'
+    }
+    else if(value === 'password'){
+      return 'password'
+    }
+    else if(value === 'email'){
+      return 'email'
+    }
+    else{
+      return 'text'
+    }
+  }
   function isStar(error) {
     if(error){
      return <span className='error-star'>*</span>
     }
+  }
+  function renderInputDiv(value, error, handleChange, valueName){
+    return(
+      <div className='input-wrapper'>
+        <label htmlFor={valueName}> 
+          {inputHeaders[valueName]}
+          {isStar(error)}
+        </label>
+        <input id={valueName} type={checkType(valueName)} value={value} onChange={handleChange} placeholder={placeholders[valueName]} 
+        className={`${Theme && 'input-dark'}`}/>
+        <p className='error-p'>{error}</p>
+      </div>
+    )
+  }
+  function renderCheckboxDiv(value, error, handleChange){
+    return(
+      <div className='checkbox-wrapper'>
+        <input id='agree' type="checkbox" value={value} onChange={handleChange}  className={`w-5 ${Theme && 'checkbox'}`}/>
+        <label className={`as-end agree-text ${Theme && 'dark-checkbox'}`}
+        htmlFor="agree">Sözleşmeyi kabul ediyorum
+          {isStar(error)}
+        </label>
+        <p className={`checkbox-error-p ${Theme && 'checkbox-error-p-dark'}`}>{error}</p>
+      </div>  
+    )
   }
   return (
     <div className={`form-container ${Theme && 'bg-dark'}`}>
@@ -48,6 +96,7 @@ function Signup({setTheme}) {
           }
           onSubmit={(values, {resetForm, setSubmitting}) =>{
             console.log(values);
+            resetForm();
           }}
           >
             { ({values, errors, handleReset, handleSubmit, dirty, isSubmitting, handleChange}) => (
@@ -57,69 +106,18 @@ function Signup({setTheme}) {
                 <hr className={`header-line ${Theme && 'header-line-dark'}`} />
               </div>
               <div className='d-flex'>
-                <div className='input-wrapper'>
-                  <label htmlFor="name">İSİM
-                    {isStar(errors.name)}
-                  </label>
-                  <input id='name' type="text" value={values.name} onChange={handleChange} placeholder={placeholders.name} 
-                  className={`${Theme && 'input-dark'}`}
-                  />
-                  <p className='error-p'> {errors.name}</p>
-                </div>
-                <div className='divider'> 
-
-                </div>
-                <div> 
-                  <label htmlFor="lastName">SOYİSİM
-                    {isStar(errors.lastName)}
-                  </label>
-                  <input id='lastName' type="text" value={values.lastName} onChange={handleChange} placeholder={placeholders.lastName}
-                  className={`${Theme && 'input-dark'}`}/>
-                  <p> {errors.lastName}</p>
-                </div>
+                {renderInputDiv(values.name, errors.name, handleChange, 'name')}
+                <div className='divider'></div>
+                {renderInputDiv(values.lastName, errors.lastName, handleChange, 'lastName')}
               </div>
-              <div>
-                  <label htmlFor="email">E-POSTA 
-                    {isStar(errors.email)}
-                  </label>
-                  <input id='email' type="email" value={values.email} onChange={handleChange} placeholder={placeholders.email} 
-                  className={`${Theme && 'input-dark'}`}/>
-                  <p> {errors.email}</p>
-              </div>
-              <div>
-                <label htmlFor="userName">KULLANICI ADI
-                  {isStar(errors.userName)}
-                </label>
-                <input id='userName' type="text" value={values.userName} onChange={handleChange} placeholder={placeholders.userName} 
-                className={`${Theme && 'input-dark'}`}/>
-                <p> {errors.userName}</p>
-              </div>
-              <div>
-                <label htmlFor="password">ŞİFRE
-                  {isStar(errors.password)}
-                </label>
-                <input id='password' type="password" value={values.password} onChange={handleChange} placeholder={placeholders.password}
-                className={`${Theme && 'input-dark'}`}/>
-                <p> {errors.password}</p>
-              </div>
-              <div>
-                <label htmlFor="repeatPassword">ŞİFRENİ   TEKRAR GİR {isStar(errors.repeatPassword)}
-                </label>
-                <input id='repeatPassword' type="password" value={values.repeatPassword} onChange={handleChange} placeholder={placeholders.repeatPassword} className={`${Theme && 'input-dark'}`}/>
-                <p> {errors.repeatPassword}</p>
-              </div>
-              <div className='d-flex checkbox-wrapper'>
-                <input id='agree' type="checkbox" value={values.agree} onChange={handleChange}  className={`w-5 ${Theme && 'checkbox'}`}/>
-                <label className={`as-end agree-text ${Theme && 'dark-checkbox'}`}
-                htmlFor="agree">Sözleşmeyi kabul ediyorum
-                  {isStar(errors.agree)}
-                </label>
-                <p className='mt-1 ml-1'>{errors.agree}</p>
-              </div>
+              {renderInputDiv(values.email, errors.email, handleChange, 'email')}
+              {renderInputDiv(values.userName, errors.userName, handleChange, 'userName')}
+              {renderInputDiv(values.password, errors.password, handleChange, 'password')}
+              {renderInputDiv(values.repeatPassword, errors.repeatPassword, handleChange, 'repeatPassword')}
+              {renderCheckboxDiv(values.agree, errors.agree, handleChange)}
               <button className={`submit-btn ${Theme && 'bg-yellow'}`} type='submit' disabled={!dirty}>KAYIT OL</button>
             </form> 
             )}
-      
         </Formik>
       </div>
     </div>
