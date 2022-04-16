@@ -42,15 +42,18 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /* Intro */
 
-/* col-6 mx-auto mt-2 bg-dadada */
 .intro-container{
   width: 48%;
   padding: 2rem 2rem;
   padding-left: 2.5rem;
   background-color: #dadada;
-  height: 100vh;
+  height: 93.2vh;
+  position: sticky;
+  top: 0;
+  flex-grow: 0;
 }
 
 .intro-header{
@@ -93,6 +96,7 @@ table {
   padding-top: 2rem;
   position: relative;
   height: 100vh;
+  padding: 2rem 0;
 }
 
 .theme-switcher{
@@ -121,6 +125,7 @@ input{
   height: 25px;
   padding: 10px;
   border-radius: 5px;
+  border: 2px solid black;
 }
 
 form div{
@@ -163,6 +168,13 @@ form div p{
   height: 3px;
   background-color: #444AFF;
 }
+
+.checkbox-wrapper{
+  max-height: 30px;
+  display: flex;
+  position: relative;
+}
+
 .agree-text{
   font-family: 'Oxygen';
   font-style: normal;
@@ -176,6 +188,22 @@ form div p{
 
 #agree:hover{
   cursor: pointer;
+}
+
+.input-wrapper{
+  position: relative;
+  margin-bottom: 1.7rem;
+}
+
+.error-p{
+  position: absolute;
+  margin-top: 5px;
+}
+
+.checkbox-error-p{
+  position: absolute;
+  right: -8px;
+  top: 2px;
 }
 .submit-btn{
   width: 106%;
@@ -194,13 +222,6 @@ form div p{
 .w-5{
   width: 5%;
 }
-.text-center{
-  text-align: center;
-}
-
-.text-start{
-  text-align: start;
-}
 
 .position-relative{
   position: relative;
@@ -215,9 +236,6 @@ form div p{
 }
 .w-100{
   width: 100%;
-}
-.col-6{
-  width: 48%;
 }
 
 .d-flex{
@@ -244,10 +262,6 @@ form div p{
 
 .as-end{
   align-self: end;
-}
-
-.js-start{
-  justify-self: start;
 }
 
 .mx-auto{
@@ -307,20 +321,18 @@ form div p{
 
 }
 
+.dark-checkbox:hover{
+  cursor: pointer !important;
+}
+
 .checkbox:checked + .dark-checkbox::before{
   content: '\2713';
   color: #fff;
   font-size: 20px;
 }
 
-.checkbox:checked + .dark-checkbox{
-
-}
-
-.checkbox-wrapper{
-  max-height: 30px;
-  display: flex;
-  position: relative;
+.checkbox-error-p-dark{
+  top: 11px;
 }
 
 /* Intro Dark */
@@ -328,27 +340,3 @@ form div p{
 .bg-dark-grey{
   background: #8C8C8C;
 }
-
-
-/* Fix visual issues */
-
-.input-wrapper{
-  position: relative;
-  margin-bottom: 1.7rem;
-}
-
-.error-p{
-  position: absolute;
-  margin-top: 5px;
-}
-
-.checkbox-error-p{
-  position: absolute;
-  right: -8px;
-  top: 4px;
-}
-
-.checkbox-error-p-dark{
-  top: 11px;
-}
-

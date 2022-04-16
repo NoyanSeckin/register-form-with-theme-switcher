@@ -62,14 +62,13 @@ function Signup({setTheme}) {
         htmlFor="agree">Sözleşmeyi kabul ediyorum
           {isStar(error)}
         </label>
-        <p className={`checkbox-error-p ${Theme && 'checkbox-error-p-dark'}`}>{error}</p>
       </div>  
     )
   }
   return (
     <div className={`form-container ${Theme && 'bg-dark'}`}>
       <img onClick={()=> setTheme(!Theme)} className='theme-switcher' src={`${Theme ? require('../images/theme-switcher-light.png') : (require('../images/theme-switcher.png'))  }`} alt="" />
-      <div className="form-wrapper d-flex flex-col align-center ">
+      <div className="form-wrapper d-flex flex-col align-center">
         <Formik 
         initialValues={{
             name: '',
@@ -94,13 +93,13 @@ function Signup({setTheme}) {
               agree: Yup.bool().oneOf([true], 'Koşulları kabul etmelisiniz')
             })
           }
-          onSubmit={(values, {resetForm, setSubmitting}) =>{
+          onSubmit={(values, {resetForm}) =>{
             console.log(values);
             resetForm();
           }}
           >
-            { ({values, errors, handleReset, handleSubmit, dirty, isSubmitting, handleChange}) => (
-            <form className={` w-70 ${Theme && 'color-white'}`} onSubmit={handleSubmit}>
+            { ({values, errors, handleSubmit, dirty, handleChange}) => (
+            <form className={`${Theme && 'color-white'}`} onSubmit={handleSubmit}>
               <div>
                 <h1 className={`header as-start ${Theme && 'color-white'}`}>Kayıt</h1>
                 <hr className={`header-line ${Theme && 'header-line-dark'}`} />

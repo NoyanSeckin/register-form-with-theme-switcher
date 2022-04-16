@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Sign Up Form Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+
+This is an assignment given by Patika.Dev organization to reinforce our learning.
+I used Yup and Formik to complete this sign up form.
+
+## Screen Shots
+
+![bg-light](./src/images/screenshots/bg-light.png)
+![bg-dark](./src/images/screenshots/bg-dark.png)
+![erros-active](./src/images/screenshots/errors-active.png)
 
 ## Available Scripts
 
