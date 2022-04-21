@@ -1,8 +1,8 @@
-# Sign Up Form Assignment
+# Register Form Challenge
 
 ## Description
 
-This is an assignment given by Patika.Dev organization to reinforce our learning.
+This is a challenge given by Patika.Dev organization to reinforce our learning.
 I used Yup and Formik packages to complete this sign up form.
 
 ###
